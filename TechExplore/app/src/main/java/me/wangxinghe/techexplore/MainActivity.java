@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private TextView mTextView;
 
+    //
     private RxJavaSample mRxJavaSample;
 
     @Override
