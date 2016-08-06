@@ -1,6 +1,6 @@
-package me.wangxinghe.techexplore.api;
+package com.mouxuejie.fun.api;
 
-import me.wangxinghe.techexplore.bean.UserInfo;
+import com.mouxuejie.fun.bean.UserInfo;
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;

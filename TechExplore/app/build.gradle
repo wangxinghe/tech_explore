@@ -1,25 +1,80 @@
+//应用Android插件
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    //指定用来编译的Android API版本号
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    //指定sdk构建工具版本号
+    buildToolsVersion BUILD_TOOLS_VERSION
 
-    defaultConfig {
-        applicationId "me.wangxinghe.techexplore"
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+    defaultConfig {//默认配置
+        //唯一标识一个app
+        applicationId "com.mouxuejie.fun"
+        //指定运行需要的最小API版本
+        minSdkVersion MIN_SDK_VERSION
+        //指定用来测试的API版本
+        targetSdkVersion TARGET_SDK_VERSION
+        //app版本号
+        versionCode VERSION_CODE as int
+        //app 版本名字
+        versionName VERSION_NAME
+        //分包
+        multiDexEnabled true
+    }
+    lintOptions {
+        //忽略Lint错误
+        abortOnError false
+    }
+    signingConfigs {//签名
+        release {
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+        }
     }
     buildTypes {
+        debug {
+            //debug
+        }
         release {
-            minifyEnabled false
+            //启用代码混淆
+            minifyEnabled true
+            //代码混淆使用的配置文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+            //移除无用的Resource
+            shrinkResources true
+            //资源文件对齐
+            zipAlignEnabled true
+        }
+    }
+    productFlavors {//多渠道打包
+        dev {
+            // applicationId不同，认为是两个不同的app，可以同时安装在一台设备上，
+            // 因此为便于调试，通过修改applicationId或者后缀可以同时安装线上包和开发包
+            applicationIdSuffix ".debug"
+        }
+        googleplay {}
+        baidu {}
+        qihoo360 {}
+        xiaomi {}
+        tencent {}
+        anzhi {}
+    }
+
+    // 指定apk名字输出格式
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    "techexplore-${variant.buildType.name}-${variant.versionName}-${variant.productFlavors[0].name}.apk".toLowerCase())
         }
     }
 }
 
-dependencies {
+dependencies {//指定依赖
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'io.reactivex:rxjava:1.1.0'

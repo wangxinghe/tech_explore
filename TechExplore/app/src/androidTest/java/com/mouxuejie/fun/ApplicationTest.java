@@ -1,4 +1,4 @@
-package me.wangxinghe.techexplore;
+package com.mouxuejie.fun;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

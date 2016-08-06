@@ -1,4 +1,4 @@
-package me.wangxinghe.techexplore;
+package com.mouxuejie.fun;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +13,9 @@ import com.jakewharton.rxbinding.view.RxView;
 
 import java.util.concurrent.TimeUnit;
 
-import me.wangxinghe.techexplore.api.GithubAPI;
-import me.wangxinghe.techexplore.bean.UserInfo;
-import me.wangxinghe.techexplore.sample.RxJavaSample;
+import com.mouxuejie.fun.api.GithubAPI;
+import com.mouxuejie.fun.bean.UserInfo;
+import com.mouxuejie.fun.sample.RxJavaSample;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;

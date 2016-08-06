@@ -1,4 +1,4 @@
-package me.wangxinghe.techexplore.sample;
+package com.mouxuejie.fun.sample;
 
 import android.util.Log;
 

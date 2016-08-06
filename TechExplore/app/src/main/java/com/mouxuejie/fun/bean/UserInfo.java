@@ -1,4 +1,4 @@
-package me.wangxinghe.techexplore.bean;
+package com.mouxuejie.fun.bean;
 
 /**
  * Created by wangxinghe on 23/3/2016.
